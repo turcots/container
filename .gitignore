@@ -26,15 +26,11 @@ bld/
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
-
-bin/
-obj/
-Debug/
-Release/
-*/**/bin/Debug
-*/**/bin/Release
-*/**/obj/Debug
-*/**/obj/Release
+[Bb]in/
+[Oo]bj/
+bin
+obj
+config
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

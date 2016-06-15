@@ -4,3 +4,9 @@ C:\stu\github\projets\Dev\TestApplication\TestApplication\bin\Debug\TestApplicat
 C:\stu\github\projets\Dev\TestApplication\TestApplication\obj\Debug\TestApplication.csprojResolveAssemblyReference.cache
 C:\stu\github\projets\Dev\TestApplication\TestApplication\obj\Debug\TestApplication.exe
 C:\stu\github\projets\Dev\TestApplication\TestApplication\obj\Debug\TestApplication.pdb
+C:\gitHub\container\TestApplication\TestApplication\bin\Debug\TestApplication.exe.config
+C:\gitHub\container\TestApplication\TestApplication\obj\Debug\TestApplication.exe
+C:\gitHub\container\TestApplication\TestApplication\obj\Debug\TestApplication.pdb
+C:\gitHub\container\TestApplication\TestApplication\bin\Debug\TestApplication.exe
+C:\gitHub\container\TestApplication\TestApplication\bin\Debug\TestApplication.pdb
+C:\gitHub\container\TestApplication\TestApplication\obj\Debug\TestApplication.csprojResolveAssemblyReference.cache

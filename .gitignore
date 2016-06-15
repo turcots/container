@@ -31,6 +31,10 @@ bin/
 obj/
 Debug/
 Release/
+*/**/bin/Debug
+*/**/bin/Release
+*/**/obj/Debug
+*/**/obj/Release
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

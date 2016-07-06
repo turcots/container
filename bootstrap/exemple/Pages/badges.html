@@ -1,11 +1,53 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+
 </head>
 <body>
-    badges...222
+    <h4>
+        Example of badges
+        <span class="badge">100</span>
+    </h4>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Jumbotron example</h1>
+            <p>asd asfa fd sfd fdfr</p>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Accordion example</h1>
+
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="accordion" href="#c1">Example 1</a>
+                    </h4>
+                </div>
+                <div id="c1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>asd asd asd asd asdasdasdasd asdasd</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="progress progress-bar-striped">
+            <div class="progress-bar progress-bar-success" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" style="width:50%">
+                <span class="sr-only"><span>10</span>% complete</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
 </body>
 </html>

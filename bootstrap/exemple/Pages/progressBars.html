@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+
+</head>
+<body>
+  
+    <div class="row">
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" style="width:10%">
+                <span ><span>10</span>% complete</span>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-info" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="width:50%">
+                <span><span>50</span>% complete</span>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="80" style="width:80%">
+                <span ><span>80</span>% complete</span>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="20" style="width:20%">
+                <span ><span>20</span>% complete</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+
+    <script>
+        $(function () {
+            var $query = $("div.progress > div ");
+            $query.click(function () {
+                var div = $(this);
+                var i = 300;
+                var go = function () {
+                    var valueNow = div.attr("aria-valuenow");
+
+                    if (valueNow >= 100)
+                        return 100;
+
+                    valueNow = parseInt(valueNow) + 2;
+
+                    div.css("width", valueNow + "%");
+                    div.attr("aria-valuenow", valueNow);
+
+                    span = div.find("span > span");
+                    span.text(valueNow);
+
+                    if (valueNow < 100) {
+                        window.setTimeout(go, i);
+                    }
+                }
+                go();
+            });
+        });
+    </script>
+</body>
+</html>

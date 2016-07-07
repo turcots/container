@@ -7,35 +7,59 @@
     <link href="../Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="row">
-        <div class="col-lg-offset-5">
-            <h1>Alerts</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-5">
+                <h1>Alerts</h1>
+            </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-lg-3 alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            success
-        </div>
-        <div class="col-lg-3 alert alert-info alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            info
-        </div>
-        <div class="col-lg-3 alert alert-warning alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            warning
-        </div>
-        <div class="col-lg-3 alert alert-danger alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            danger
-        </div>
-        <div class="alert alert-danger">
-            
-            danger
+        <div class="row">
+            <div id="alert-1" class="col-lg-3 alert alert-success alert-dismissable">
+                <button id="btn-1" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                success
+            </div>
+            <div id="alert-2" class="col-lg-3 alert alert-info alert-dismissable">
+                <button id="btn-2" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                info
+            </div>
+            <div id="alert-3" class="col-lg-3 alert alert-warning alert-dismissable">
+                <button id="btn-3" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                warning
+            </div>
+            <div id="alert-4" class="col-lg-3 alert alert-danger alert-dismissable">
+                <button id="btn-4" type="button" class="close"  aria-hidden="true">&times;</button>
+                danger
+            </div>
+
         </div>
     </div>
     <script src="../Scripts/jquery-1.9.1.js"></script>
     <script src="../Scripts/bootstrap.js"></script>
+
+    <script>
+        $(function () {
+            $("div.alert button").on("click", function (e) {
+                $(this).alert('close');
+            })
+
+            $(".alert").bind('close.bs.alert', function (e) {
+                var $target = $(e.delegateTarget)
+                   
+                console.log('close alert');
+                console.log(e.delegateTarget.id);
+                console.log($target.find("button").attr("id"));
+            })
+
+            $(".alert").bind('closed.bs.alert', function (e) {
+                var $target = $(e.delegateTarget)
+
+                console.log('closed alert');
+                console.log(e.delegateTarget.id);
+                console.log($target.find("button").attr("id"));
+            })
+        })
+
+    </script>
 </body>
 </html>

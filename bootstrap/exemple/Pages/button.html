@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container">
+        <button id="btn-1" type="button" data-loading-text="Loading...." data-complete-text="Loading complete" class="btn btn-success">test</button>
+    </div>
+
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <script>
+
+        $(function () {
+            "use strict";
+
+            $("#btn-1").click(function () {
+
+                var btn = $(this);
+                btn.button('loading');
+                console.log('loading');
+
+                 setTimeout(function () { $(btn).button('complete'); }, 3000);
+                 console.log('complete');
+
+               //  btn.button('reset');
+                //$(btn).button('complete');
+            })
+        })
+
+    </script>
+</body>
+</html>

@@ -4,8 +4,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 	<meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="container">
+        <button id="btn-save" data-placement="bottom" data-toggle="tooltip" type="button" class="btn btn-success" 
+                title="<img src='../Images/lotus.jpg' width='15' height='15' /> Process" data-html="true">save</button>
+    </div>
+    
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
 
+    <script>
+        var param = {
+            placement: "left"
+        };
+
+      //  $("#btn-save").tooltip(param);
+        $("#btn-save").tooltip();
+    </script>
 </body>
 </html>

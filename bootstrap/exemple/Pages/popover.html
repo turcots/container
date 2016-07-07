@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container">
+        <button id="ss-top" class="btn btn-primary" data-title="Popover top" data-content="Content for the top">top</button>
+        <button id="ss-left" class="btn btn-success" data-title="Popover left" data-content="Content for the left">left</button>
+    </div>
+
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+
+    <script>
+        $(function () {
+            "use strict";
+
+            var options = {
+                delay: { show: 500, hide: 100 },
+                title: "<img src='../Images/lotus.jpg' width='15' height='15' /> <span style='color:red'>javascript title</span>",
+                html: "true",
+                placement: "bottom",
+                trigger: "hover"
+            };
+
+            var $buttons = $("div.container button ");
+            $buttons.popover(options);
+
+            //events
+            $buttons.on('show.bs.popover', function (e) {
+                console.log('popover');
+                console.log(e.delegateTarget.id);
+            })
+        })
+    </script>
+</body>
+</html>

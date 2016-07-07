@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        .ss-header{
+            font-family: Verdana;
+            font-size: 60pt;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tabs</h1>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a data-toggle="tab" href="#exemple1">exemple 1</a></li>
+            <li><a data-toggle="tab" href="#exemple2">exemple 2</a></li>
+            <li><a data-toggle="tab" href="#exemple3">exemple 3</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="exemple1" class="well tab-pane active">
+                <span class="ss-header">Exemple 1</span>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+            </div>
+
+            <div id="exemple2" class="well tab-pane">
+                <span class="ss-header">Exemple 2</span>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+            </div>
+
+            <div id="exemple3" class="well tab-pane">
+                <span class="ss-header">Exemple 3</span>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+            </div>
+            <div id="ss-message" class="alert alert-danger hide">Error !</div>
+        </div>
+    </div>
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script>
+        (function () {
+            "use strict";
+            console.log('test1');
+
+            var $divMessage = $("#ss-message");
+
+            $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+                console.log('test');
+
+                $divMessage.addClass("hide");
+
+                var positionFound = e.relatedTarget.href.indexOf("#") + 1;
+                var whichTab = e.target.href.substr(positionFound);
+
+                if (whichTab == "exemple3") {
+                    $divMessage = $("#ss-message");
+                    $divMessage.text("pas autoriser a voir les donnees.");
+                    $divMessage.removeClass("hide");
+                    e.preventDefault();
+                }
+            })
+        })();
+    </script>
+</body>
+</html>

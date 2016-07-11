@@ -10,6 +10,121 @@
 
     <div class="container">
         <button id="btn-1" type="button" data-loading-text="Loading...." data-complete-text="Loading complete" class="btn btn-success">test</button>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-success">Success</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-warning">Warning</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-danger">Danger</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="btn btn-success">Success</a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="btn btn-warning">Warning</a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="btn btn-danger">Danger</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-success btn-sm">Success</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-warning btn-sm">Warning</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-danger btn-sm">Danger</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="btn btn-success btn-sm">Success</a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="btn btn-warning btn-sm">Warning</a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="btn btn-danger btn-sm">Danger</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-success btn-lg">Success</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-warning btn-lg">Warning</button>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <button type="button" class="btn btn-danger btn-lg">Danger</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="btn btn-success btn-lg">Success</a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="btn btn-warning btn-lg">Warning</a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="#" class="btn btn-danger btn-lg">Danger</a>
+            </div>
+        </div>
+    
+        <div class="row">
+            <h3 class="text-center">Button group</h3>
+            <div class="col-lg-7">
+                <div id="payMenOptions" class="btn-group btn-group-sm" data-toggle="buttons">
+                    <label class="btn btn-success">
+                        Discover
+                        <input type="radio" name="rbOption" value="d" />
+                    </label>
+                    <label class="btn btn-success">
+                        American
+                        <input type="radio" name="rbOption" value="a" />
+                    </label>
+                    <label class="btn btn-success">
+                        Visa
+                        <input type="radio" name="rbOption" value="v" />
+                    </label>
+                    <div id="otherPayments" class="btn-group btn-group-sm">
+
+                        <button id="otherPaymentLabel" class="btn btn-success" data-toggle="dropdown">
+                            Other 
+                        </button>
+                        <button class="btn btn-success" data-toggle="dropdown">
+                           <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li class="dropdown-header">Header</li>
+                                <li class="disabled">
+                                    <a data-selected="mo" href="#" tabindex="-1">Money order</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a data-selected="bc" href="#" tabindex="-1">Bankcheck</a>
+                                </li>
+                                <li>
+                                    <a data-selected="pc" href="#" tabindex="-1">Personal check</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <input type="radio" id="rbOtherOption" name="rbOption" class="hidden" />
+                </div>  
+
+            </div>
+        </div>
     </div>
 
     <script src="../Scripts/jquery-1.9.1.js"></script>
@@ -19,6 +134,31 @@
 
         $(function () {
             "use strict";
+
+            $("#otherPayments a").click(function () {
+                var options = $(this).text();
+
+                $("#otherPaymentLabel").text(options);
+                
+
+                $("#payMenOptions > label").removeClass("active");
+
+               // console.log($("#payMenOptions > label"));
+
+                $("#otherPaymentLabel").addClass("active");
+
+                var otherValue = $(this).attr("data-selected");
+               
+                $("#rbOtherOption").prop("checked", true);
+                $("#rbOtherOption").val(otherValue);
+
+                console.log($("[type='radio']:checked"));
+
+            });
+
+            $("#payMenOptions > label").click(function () {
+                $("#otherPaymentLabel").text("Other");
+            })
 
             $("#btn-1").click(function () {
 

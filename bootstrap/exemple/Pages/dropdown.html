@@ -5,15 +5,30 @@
     <title></title>
 	<meta charset="utf-8" />
     <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        *[role='menuitem']{
+            text-indent: 4px;
+        }
+
+        .dropdown-header{
+            color: red;
+            font-size: 110%;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1 class="text-center">Drop down plug in</h1>
         <div class="dropdown">
+            <button type="button" class="btn dropdown-toggle" id="ddlCourses" data-toggle="dropdown">SkillSoft Courses</button>
+
             <a id="drop4" data-toggle="dropdown" role="button" href="#">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu" id="menu1" role="menu" aria-labelledby="drop4">
+                <li role="presentation" class="dropdown-header">Header</li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Item 1</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Item 2</a></li>
+                <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Item 3</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Item 4</a></li>
             </ul>

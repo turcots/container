@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>-->
+ <!--   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.2/jquery.ui.min.js" type="text/javascript"></script>-->
+</head>
+<body>
+
+    <!--<p>First Name : <input data-bind="value: firstName" /></p>
+    <p>Last Name : <input data-bind="value: lastName" /></p>
+
+    <h2>Hello, <span data-bind="text: fullName"></span></h2>-->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">Customer Name</div>
+        <div class="col-lg-3">Food Choice</div>
+        <div class="col-lg-3">Cost</div>
+        <div class="col-lg-3"></div>
+    </div>
+    <div data-bind="foreach: locations">
+        <div class="row">
+            <div class="col-lg-3"><input data-bind="value : name" /></div>
+            <div class="col-lg-3"><select data-bind="options: $root.availableFood, value: meal, optionsText: 'foodName'"></select></div>
+            <div class="col-lg-3"><span data-bind="text: formattedPrice" /></div>
+            <div class="col-lg-3"><a href="#" data-bind="click: $root.removeLocation">Remove Location</a></div>
+        </div>
+     </div>
+    <div class="row text-center" >
+        <div class="col-lg-12"><button data-bind="click: addLocation">Reserve new location</button></div>
+    </div>
+</div>
+
+
+<!--<table>
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Food Choice</th>
+            <th>Cost</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: locations">
+        <tr>
+            <td><input data-bind="value : name" /></td>
+            <td><select data-bind="options: $root.availableFood, value: meal, optionsText: 'foodName'"></select></td>
+            <td data-bind="text: formattedPrice"></td>
+            <td><a href="#" data-bind="click: $root.removeLocation">Remove Location</a></td>
+        </tr>
+    </tbody>
+</table>-->
+
+
+
+<!--<h3 data-bind="visible: totalCost() > 0"></h3>-->
+
+    <script type="text/javascript">
+        function locationRes(name, initialMeal) {
+            var self = this;
+            self.name = name;
+            self.meal = ko.observable(initialMeal);
+
+            self.formattedPrice = ko.computed(function () {
+                var price = self.meal().price;
+                return price ? "$" + price.toFixed(2) : "FREE";
+            });
+        }
+
+        function ReservationViewModel() {
+            var self = this;
+
+            self.availableFood = [
+                {foodName : "Standard (sandwich)", price: 0},
+                {foodName : "Premium (steak)", price: 29.95},
+                {foodName : "Luxury (salobsterndwich)", price: 199},
+                { foodName: "Apps (shrimp)", price: 9.95 },
+            ];
+
+            self.locations = ko.observableArray([
+               new locationRes("John", self.availableFood[0]),
+               new locationRes("Alex", self.availableFood[1])
+            ]);
+
+            self.addLocation = function() {
+                self.locations.push(new locationRes("", self.availableFood[0]));
+            }
+        }
+        ko.applyBindings(new ReservationViewModel());
+
+
+        //var ViewModel = function (first, last) {
+        //    this.firstName = ko.observable(first);
+        //    this.lastName = ko.observable(last);
+
+        //    this.fullName = ko.computed(function () {
+        //        return this.firstName() + " " + this.lastName();
+        //    }, this);
+        //}
+
+        //ko.applyBindings(new ViewModel("Adam","West"));
+
+    </script>
+
+</body>
+</html>

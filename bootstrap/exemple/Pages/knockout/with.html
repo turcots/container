@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+
+    <p data-bind="with: month">
+        days : <span data-bind="text: days"></span>
+        weeks : <span data-bind="text: weeks"></span>
+    </p>
+    <script type="text/javascript">
+        ko.applyBindings({
+            month: {
+                days: 30,
+                weeks: 4
+            }
+        })
+    </script>
+</body>
+</html>

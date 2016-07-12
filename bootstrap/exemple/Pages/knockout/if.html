@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+    <label><input type="checkbox" data-bind="checked: displayInfo" /> My message</label>
+    <div data-bind="if : displayInfo">(if) checked</div>
+    <div data-bind="ifnot : displayInfo">(if not) not checked</div>
+
+    <script type="text/javascript">
+
+        ko.applyBindings({displayInfo: ko.observable(false)});
+    </script>
+</body>
+</html>

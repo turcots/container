@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+
+    <h2>Totql seats : <span data-bind="text: seats().length"></span></h2>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">Passenger name</div>
+            <div class="col-lg-3">Meal</div>
+            <div class="col-lg-3">Surcharge</div>
+            <div class="col-lg-3"></div>
+        </div>
+        <div data-bind="foreach: seats">
+            <div class="row">
+                <div class="col-lg-3"><input data-bind="value : name" /></div>
+                <div class="col-lg-3"><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></div>
+                <div class="col-lg-3"><span data-bind="text: formattedPrice" /></div>
+                <div class="col-lg-3"><a href="#" data-bind="click: $root.removeSeat">Remove</a></div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-12"><button data-bind="click: addSeat, enable: seats().length < 5">Reserve another</button></div>
+        </div>
+
+        total :<p data-bind="text: totalSurchage"></p>
+    </div>
+
+
+
+    <script type="text/javascript">
+        function SeatReservation(name, initialMeal) {
+            var self = this;
+            self.name = name;
+            self.meal = ko.observable(initialMeal);
+
+            self.formattedPrice = ko.computed(function () {
+                var price = self.meal().price;
+                return price ? "$" + price.toFixed(2) : "FREE";
+            });
+        }
+
+        function ReservationViewModel() {
+            var self = this;
+
+            //non-editable
+            self.availableMeals = [
+                { mealName: "Standard (sandwich)", price: 0 },
+                { mealName: "Premium (steak)", price: 29.95 },
+                { mealName: "Luxury (salobsterndwich)", price: 199 },
+                { mealName: "Apps (shrimp)", price: 9.95 },
+            ];
+
+
+            self.seats = ko.observableArray([
+               new SeatReservation("John", self.availableMeals[0]),
+               new SeatReservation("Alex", self.availableMeals[1])
+            ]);
+
+            self.addSeat = function () {
+                self.seats.push(new SeatReservation("", self.availableMeals[0]));
+            }
+
+            self.totalSurchage = ko.computed(function () {
+                var total = 0;
+                console.log(self.seats.length);
+                for (var i = 0; i < self.seats.length; i++)
+                {
+                    total += self.seats[i].meal().price;
+                    return total;
+                }
+            }, self);
+        }
+        ko.applyBindings(new ReservationViewModel());
+
+    </script>
+</body>
+</html>

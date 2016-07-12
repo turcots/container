@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+    <div class="container">
+        <p> First name : <strong data-bind="text: firstName"></strong></p>
+        <p> Last name : <strong data-bind="text: lastName"></strong></p>
+
+
+        <p> First name : <input data-bind="value: firstName"/></p>
+        <p> Last name : <input data-bind="value: lastName"/></p>
+
+        <p> Full name : <strong data-bind="text: fullName"></strong></p>
+
+        <button type="button" data-bind="click: upLastName" class="btn btn-success">go</button>
+    </div>
+
+    <script type="text/javascript">
+
+        function AppViewModel() {
+            this.firstName = ko.observable("Alex");
+            this.lastName = ko.observable("Whitman");
+            
+
+            this.fullName = ko.computed(function () {
+                return this.firstName() + " " + this.lastName();
+            }, this);
+
+        }
+
+        this.upLastName = function () {
+            var currentVal = this.lastName(); //read in the last name
+            this.lastName(currentVal.toUpperCase());
+        };
+
+        ko.applyBindings(new AppViewModel());
+
+        //var myVM = { firstname: ko.observable("Adam") };
+
+        //console.log(myVM);
+        //ko.applyBindings(myVM);
+    </script>
+</body>
+</html>

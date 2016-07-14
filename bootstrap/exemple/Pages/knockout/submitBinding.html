@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+        <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+    <form data-bind="submit: displayAlert">
+
+        <h1>this button, when clicked, will alert me</h1>
+        <br />
+        <button type="submit">submit</button>
+
+
+       
+            <p>
+                <input type="checkbox" data-bind="checked: hasHouse" /> I have a home.
+            </p>
+        <p>you live at <input type="text" data-bind="value: houseNumber, enable: hasHouse" /></p>
+
+        <script type="text/javascript">
+            var viewModel = function(){
+                this.hasHouse =  ko.observable(false);
+                this.houseNumber =  "";
+
+                displayAlert =  function (formElement) {
+                    console.log(formElement);
+                    //alert('some stuff');
+                }
+            }
+
+            ko.applyBindings(new viewModel());
+
+        </script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+    <script src="../../Scripts/jquery-3.0.0.js"></script>
+</head>
+<body>
+    <h2>People</h2>
+
+    <ul data-bind="foreach: people">
+        <li>
+            <div>
+                <span data-bind="text: name"></span>
+                    has <span data-bind="text: offspring().length"> </span> children :
+                    <a href="#" data-bind="click: addChild">Add child</a>
+                    <span class="renderTime" data-bind="visible: $root.showRenderTimes"></span>
+                    (person rendered at <span data-bind="text: new Date().getSeconds()"></span>)
+                
+            </div>
+
+            <ul data-bind="foreach: offspring">
+                <li>
+                    <span data-bind="text: $data"></span>
+                    <span class="renderTime" data-bind="visible: $root.showRenderTimes">
+                        (child rendered at <span data-bind="text: new Date().getSeconds()"></span>)
+                    </span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <label><input data-bind="checked: showRenderTimes" type="checkbox" /></label> show render times
+
+    <script type="text/javascript">
+        var Person = function (name, offspring) {
+            this.name = name;
+            this.offspring = ko.observableArray(offspring);
+
+            this.addChild = function () {
+                this.offspring.push("New Child");
+            }.bind(this);
+        }
+
+        var viewModel = {
+            people: [
+                new Person("James", ["Kim", "Alex", "Tim"]),
+                new Person("Jane", ["John", "James", "Richard"]),
+                new Person("Frank", ["Ray", "Henry", "Joseph"])
+            ], showRenderTimes: ko.observable(false)
+        };
+
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>

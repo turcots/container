@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+
+
+    <ul class="folders" data-bind="foreach: folders">
+        <li data-bind="text: $data, 
+                       css:{selected: $data==$root.chosenFolderId()},
+                       click: $root.gotoFolder"></li>
+    </ul>
+    <script type="text/javascript">
+        function webmailViewModel() {
+            var self = this;
+            self.folders = ['Inbox', 'Archive', 'Sent', 'Spam'];
+            self.chosenFolderId = ko.observable();
+
+            self.goToFolder = function (folder) {
+                self.chosenFolderId(folder);
+            };
+        }
+
+        ko.applyBindings(new webmailViewModel());
+    </script>
+</body>
+</html>

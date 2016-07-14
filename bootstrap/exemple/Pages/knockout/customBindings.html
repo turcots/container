@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+    <script src="../../Scripts/jquery-1.9.1.js"></script>
+
+
+</head>
+<body>
+
+    <h3 data-bind="text: question"></h3>
+
+
+    <p>specify the importance <b data-bind="pointsTotal"></b> among the options listed below</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Options</th>
+                <th>Relevance</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: responses">
+            <tr>
+                <td data-bind="text: responseText"></td>
+                <td><select data-bind="options: [1,2,3,4,5], value: points"></select></td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 data-bind="fadeVisible: pointsUsed() > pointsTotal">You've used all your points.</h3>
+    <p>you've got <b data-bind="text: pointsTotal-pointsUsed()"></b> points left</p>
+
+    <button data-bind="enable: pointsUsed() < pointsTotal, click: save">Done</button>
+
+    <script type="text/javascript">
+
+        ko.bindingHandlers.fadeVisible = {
+            init: function (element, valueAccessor) {
+                var shouldDisplay = valueAccessor();
+                $(element).toggle(shouldDisplay);
+            },
+            update: function (element, valueAccessor) {
+                var shouldDisplay = valueAccessor();
+                shouldDisplay ? $(element).fadeIn() : $(element).fadeOut();
+            }
+        };
+        function Answer(text) {
+            this.responseText = text;
+            this.points = ko.observable(1);
+
+        };
+
+        function SurveyViewModel(question, pointsTotal, responses) {
+            this.question = question;
+            this.pointsTotal = pointsTotal;
+            this.responses = $.map(responses, function (text) { return new Answer(text) });
+            this.save = function () { console.log('to do more') };
+
+            this.pointsUsed = ko.computed(function () {
+                var total = 0;
+                for (var i = 0; i < this.responses.length; i++)
+                    total += this.responses[i].points();
+                return total;
+            }, this);
+        };
+
+        ko.applyBindings(new SurveyViewModel("What matters most?", 10, ["whether it works", "new information shown", "differences in display","results of testimonials"]));
+    </script>
+</body>
+</html>

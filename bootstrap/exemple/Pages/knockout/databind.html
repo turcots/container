@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+
+    <!--My message to the world <span data-bind="text : myMessage"></span>
+
+    The value of my car is : <input data-bind="value : Toyota, valueUpdate: 'Aftermarket' "/>
+
+    My number is <input data-bind="value: phoneNumber, enable: hasPhone" />-->
+
+
+    <!--<h1 data-bind="text: name"></h1>
+    <div data-bind="with: manager">
+        <span data-bind="text: name"> </span>
+        manager of <span data-bind="text: $parent.name"></span>
+    </div>-->
+
+    <div data-bind="yourBindingName: true">1</div>
+    <div data-bind="yourBindingName: false">2</div>
+
+    <script type="text/javascript">
+
+        ko.bindingHandlers.yourBindingName = {
+            init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+                var doBindData = ko.unwrap(valueAccessor());
+                return { controlDescendantBindings: !doBindData };
+            },
+            //update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+            //}
+        };
+
+
+    </script>
+</body>
+</html>

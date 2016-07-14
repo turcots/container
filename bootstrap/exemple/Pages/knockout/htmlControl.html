@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td class="label">Text value :</td>
+                <td data-bind="text: stringValue"></td>
+            </tr>
+            <tr>
+                <td class="label">Password value :</td>
+                <td data-bind="text: passwordValue"></td>
+            </tr>
+            <tr>
+                <td class="label">Boolean value :</td>
+                <td data-bind="text: booleanValue() ? 'True' :  'False'"></td>
+            </tr>
+            <tr>
+                <td class="label">Selected option :</td>
+                <td data-bind="text: selectedOptionValue"></td>
+            </tr>
+            <tr>
+                <td class="label">Multi-selected options :</td>
+                <td data-bind="text: multipleSelectedOptionValues"></td>
+            </tr>
+            <tr>
+                <td class="label">Radio options :</td>
+                <td data-bind="text: radioSelectedOptionValue"></td>
+            </tr>
+        </table>
+
+        <p>HTML Control</p>
+        <table>
+            <tr>
+                <td class="label">Text value (updates on change) :</td>
+                <td><input data-bind="value: stringValue" /></td>
+            </tr>
+            <tr>
+                <td class="label">Text value (updates on keystroke) :</td>
+                <td><input data-bind="value: stringValue, valueUpdate: 'afterkeydown'" /></td>
+            </tr>
+            <tr>
+                <td class="label">Text value (multi-line) :</td>
+                <td><textarea data-bind="value: stringValue"></textarea></td>
+            </tr>
+            <tr>
+                <td class="label">Password :</td>
+                <td><input type="password" data-bind="value: passwordValue" /></td>
+            </tr>
+            <tr>
+                <td class="label">Checkbox :</td>
+                <td><input type="checkbox" data-bind="checked: booleanValue" /></td>
+            </tr>
+            <tr>
+                <td class="label">Drop-down list :</td>
+                <td><select data-bind="options: optionValues, value: selectedOptionValue"></select></td>
+            </tr>
+            <tr>
+                <td class="label">Multi select drop-down list :</td>
+                <td><select multiple="multiple" data-bind="options: optionValues, selectedOptions: multipleSelectedOptionValues"></select></td>
+            </tr>
+            <tr>
+                <td class="label">Radio buttons:</td>
+                <td>
+                    <label><input type="radio" value="Alpha" data-bind="checked: radioSelectedOptionValue" />Alpha</label>
+                    <label><input type="radio" value="Beta" data-bind="checked: radioSelectedOptionValue" />Beta</label>
+                    <label><input type="radio" value="Gamma" data-bind="checked: radioSelectedOptionValue" />Gamma</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+
+        var viewModel = {
+            stringValue: ko.observable("Hello"),
+            passwordValue: ko.observable("myPass"),
+            booleanValue: ko.observable(true),
+            optionValues: ["First", "Second", "Third"],
+            selectedOptionValue: ko.observable("Second"),
+            multipleSelectedOptionValues: ko.observable(["First"]),
+            radioSelectedOptionValue: ko.observable("Gamma")
+        };
+
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>

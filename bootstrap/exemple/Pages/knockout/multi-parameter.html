@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+    <button data-bind="click: myFunction">test</button>
+
+    <script type="text/javascript">
+        var viewModel = {
+            myFunction: function (data, event) {
+                console.log(event);
+                if (event.shi)
+                    console.log('you pressed the button');
+                else
+                    console.log('just pressed the button');
+            }
+        };
+
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>

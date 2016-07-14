@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+
+    <h1>Movie Goers</h1>
+
+    People that go to the movies : 
+    <div data-bind="template: { name : 'moviegoer-template', data: theater}"></div>
+    <div data-bind="template: { name : 'moviegoer-template', data: patron}"></div>
+
+    <script type="text/html" id="moviegoer-template">
+        <h3 data-bind="text: name"></h3>
+        <p>Credits <span data-bind="text: credits"></span></p>
+    </script>
+
+    <script type="text/javascript">
+
+        function viewModel(){
+            this.theater = { name: "AMC", credits: 500 };
+            this.patron = { name: "Jones", credits: 20 };
+
+        }
+
+        ko.applyBindings(viewModel());
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr-CA">
+	<head>
+		<meta charset=utf-8>
+		<title>jquery Datatable</title>
+	<!--text/css-->
+		<link href="scripts/lib/DataTables-1.10.11/media/css/jquery.dataTables.css" rel="stylesheet" />
+        <link href="scripts/lib/jquery-ui-1.12.0/jquery-ui.css" rel="stylesheet" />
+		<link href="Styles/style.css" rel="stylesheet" />
+	<!--text/javascript-->	
+		<script src="scripts/jquery-2.2.3.js"></script>
+		<script src="scripts/lib/jquery-ui-1.12.0/jquery-ui.js"></script>
+		<script src="scripts/lib/DataTables-1.10.11/media/js/jquery.dataTables.js"></script>
+        <script src="scripts/lib/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
+		<script src="scripts/labo/exempleDatatable.js"></script>
+	</head>
+    <body>
+        <script type="text/javascript">
+            var contacts = null;
+            $(document).ready(function () {
+                contacts = new Contacts;
+                contacts.init();
+            });
+        </script>
+
+        <div class="bgBleu marginTop">
+            <div class="inline textArial">
+                Prénom : <span class="texteRouge">*</span><input type="text" id="prenom" /> &nbsp;
+                Nom : <span class="texteRouge">*</span><input type="text" id="nom" /> &nbsp;
+                Téléphone : <span class="texteRouge">*</span><input type="text" id="telephone" /> &nbsp;
+                Courriel : <input type="text" id="courriel" /> &nbsp;
+                <input type="button" id="btnAjouter" value="Ajouter" />
+            </div>
+        </div>
+
+        <div class="marginTop">
+            <table id="monDatatable">
+                <thead>
+                    <tr class="alignLeft textArial bold">
+                        <th class="textArial displayNone">Id</th>
+                        <th class="textArial">Nom</th>
+                        <th class="textArial">Prénom</th>
+                        <th class="textArial">Téléphone</th>
+                        <th class="textArial">Courriel</th>
+                        <th class="textArial"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Datatable-->
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <input type="button" id="btnReset" value="Reset" />
+        </div>
+
+        <div id="boiteModifierContact">
+            <input type="text" id="contactArrayIndex" class="displayNone" readonly />
+            <input type="text" id="modifierId" class="displayNone" readonly />
+            <table>
+                <tr>
+                    <td><label for="prenom">Prénom</label></td>
+                    <td><input type="text" name="prenom" id="modifierPrenom" class="width250" /></td>
+                </tr>
+                <tr>
+                    <td><label for="nom">Nom</label></td>
+                    <td><input type="text" name="nom" id="modifierNom" class="width250" /></td>
+                </tr>
+                <tr>
+                    <td><label for="telephone">Téléphone</label></td>
+                    <td><input type="text" name="telephone" id="modifierTelephone" class="width250" /></td>
+                </tr>
+                <tr>
+                    <td><label for="courriel">Courriel</label></td>
+                    <td><input type="text" name="courriel" id="modifierCourriel" class="width250" /></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

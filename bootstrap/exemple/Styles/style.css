@@ -1,0 +1,20 @@
+html {height: 100%}
+body {height: 100%; margin: 0; padding: 0}
+#map_canvas {width: 60%; height: 50%; margin:auto;}
+
+.bold {font-weight:bold;}
+.textArial {font-family:arial !important;}
+.textNumeric {font-family:monospace; font-size:17px;}
+.textCursive {font-family:cursive;}
+.texteRouge {color:#FF0000;}
+.alignLeft {text-align:left;}
+.inline {display:inline;}
+.marginTop {margin-top:20px;}
+.bgBleu {background-color:#abcdef;}
+.bgErreur {background-color:#FFCCDD;}
+.decorationNone {text-decoration: none;}
+.displayNone {display:none;}
+.width250 {width:250px;}
+
+table.dataTable tr.odd {background-color: #E2E4FF;}
+table.dataTable tr.even {background-color: white;}

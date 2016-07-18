@@ -1,0 +1,15 @@
+﻿
+h1{
+    color: red;
+    font-family: Arial;
+}
+
+p{
+    font-size: large;
+    font-family: 'Courier New';
+    /*color:green;*/
+}
+
+body {
+    color:blue;
+}

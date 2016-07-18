@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+
+    <h3>tasks</h3>
+
+    <form data-bind="submit: addTask">
+        Add task: <input data-bind="value: newTaskText" placeholder="what needs to be done?" />
+
+        <button type="submit">Add</button>
+    </form>
+
+    <ul data-bind="foreach: tasks, visible: tasks().length > 0">
+        <li>
+            <input type="checkbox" data-bind="checked: isDone" />
+            <input data-bind="value: title, disable: isDone" />
+            <a href="#" data-bind="click: $parent.removeTask">Delete</a>
+        </li>
+    </ul>
+
+    You have <b data-bind="text: notDone().length"> </b> incomplete tasks
+
+    <span data-bind="visible: notDone().length==0"> - it's party time!</span>
+
+
+
+        <script type="text/javascript">
+            function Task(data) {
+                this.title = ko.observable(data.title);
+                this.isDone = ko.observable(data.isDone);
+            };
+            function TaskListViewModel() {
+                var self = this;
+
+                self.tasks = ko.observableArray([]);
+                self.newTaskText = ko.observable();
+
+                self.notDone = ko.computed(function () {
+                    return ko.utils.arrayFilter(self.tasks(), function (task) {
+                        return !task.isDone()
+                    });
+                });
+
+                self.addTask = function () {
+                    var dat = new Task({ title: this.newTaskText() });
+                    console.log(dat);
+                    self.tasks.push(dat);
+                    self.newTaskText("");
+                };
+
+                self.removeTask = function (task) {
+                    self.tasks.remove(task);
+                };
+            };
+
+            ko.applyBindings(new TaskListViewModel());
+        </script>
+
+</body>
+</html>

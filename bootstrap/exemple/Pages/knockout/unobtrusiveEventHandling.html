@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+    <script src="../../Scripts/jquery-3.0.0.js"></script>
+</head>
+<body>
+
+    <ul id="people" data-bind="template: { name: 'personTmpl', foreach: people}">
+
+    </ul>
+
+    <script id="personTmpl" type="text/html">
+        <li>
+            <a class="remove" href="#"> x </a>
+            <span data-bind="text: name"></span>
+            <a class="add" href="#"> add child</a>
+            <ul data-bind="template: {name: 'personTmpl', foreach: children}"></ul>
+        </li>
+    </script>
+
+<!--    <a href="#" data-bind="click: function(){ viewModel.items.remove($data)}">remove</a>-->
+
+    <!--ko.dataFor(element);
+    ko.contextFor(element);-->
+
+    <script type="text/javascript">
+        //$(".remove").click(function(){
+        //    viewModel.items.remove(ko.dataFor(this));
+        //});
+        //or...
+        //$(".remove").live(function(){
+        //    viewModel.items.remove(ko.dataFor(this));
+        //});
+
+        var Person = function (name, children) {
+            this.name = ko.observable(name);
+            this.children = ko.observableArray(children || []);
+
+        }
+
+        var PeopleModel = function () {
+            this.people = ko.observableArray([
+                new Person("Bob", [
+                    new Person("Jan"),
+                    new Person("Don"), [
+                        new Person("Ted")
+                    ]
+                ])
+            ])
+        }
+
+        this.addChild = function (name, parentArray) {
+            parentArray.push(new Person(name));
+        };
+
+        ko.applyBindings(new PeopleModel());
+
+        //attach event handlers
+        $("#people").delegate(".remove", "click", function () {
+            //retrieve the context
+        })
+    </script>
+</body>
+</html>

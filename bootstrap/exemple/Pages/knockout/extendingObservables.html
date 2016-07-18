@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+    <p><input data-bind="value: myNumberOne" /> (round to whole number)</p>
+    <p><input data-bind="value: myNumberTwo" /> (round to two decimals)</p>
+
+    <script type="text/javascript">
+        ko.extenders.numeric = function (target, precision) {
+            var result = ko.computed({
+                read: target,
+                write: function (newValue) {
+                    var current = target(),
+                        roundingMultiplier = Math.pow(10, precision),
+                        newValueAsNum = isNaN(newValue) ? 0 : parseFloat(+newValue),
+                        valueToWrite = Math.round(newValueAsNum * roundingMultiplier) / roundingMultiplier;
+
+                    if (valueToWrite !== current) {
+                        target(valueToWrite);
+                    } else {
+                        if (newValue !== current) {
+                            target.notifySubscribers(valueToWrite);
+                        }
+                    }
+
+                }
+            }).extend({ notify: 'always' });
+
+            result(target());
+            return result;
+        };
+
+        function viewModel(one, two) {
+            this.myNumberOne = ko.observable(one).extend({ numeric: 0 });
+            this.myNumberTwo = ko.observable(two).extend({ numeric: 2 });
+
+        };
+
+        ko.applyBindings(new viewModel(222.12345, 33.4567889));
+
+    </script>
+</body>
+</html>
